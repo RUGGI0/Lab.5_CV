@@ -2,6 +2,11 @@ function [corners, R_map] = harris_corner(image_path)
 
 
 % --- Ensure Octave compatibility ---
+% TO ENSURE THE OCTAVE COMPATIBILITY: 
+% - the "image" package is required to run the "regionprops" function
+% - the "imshow" function is sub-optimal in Octave and 
+%   can results in scaling errors (like darkening), 
+%   here is substituted by the "imagesc" function.
 if exist('OCTAVE_VERSION', 'builtin')
     pkg load image;
 end
