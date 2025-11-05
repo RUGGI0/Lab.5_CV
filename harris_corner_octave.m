@@ -1,10 +1,5 @@
 function [corners, R_map] = harris_corner(image_path)
-% HARRIS_CORNER  Implements the Harris Corner Detector (Octave-compatible)
-%   [corners, R_map] = harris_corner(image_path)
-%
-%   image_path : string, path of the grayscale or RGB image to analyze
-%
-%   Compatible with both MATLAB and Octave.
+
 
 % --- Ensure Octave compatibility ---
 if exist('OCTAVE_VERSION', 'builtin')
