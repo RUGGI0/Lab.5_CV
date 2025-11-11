@@ -6,6 +6,7 @@ img_4=im2gray(imread('ur_c_s_03a_01_L_0379.png'));
 img_5=im2gray(imread('ur_c_s_03a_01_L_0380.png'));
 img_6=im2gray(imread('ur_c_s_03a_01_L_0381.png'));
 
+image_array = {img_1, img_2, img_3, img_4, img_5, img_6};
 img_1 = im2gray(img_1);
 
 figure(), imagesc(img_1), colormap gray;
@@ -21,17 +22,18 @@ T=img_1(370:410,560:640);
 % 
 % C = normxcorr2(T, img_1);%Normalized 2-D cross-correlation
 % figure,imagesc(C),colormap gray
-[xc, yc] = templateMatch(img_1, T);
-templateMatch(img_2, T);
-templateMatch(img_3, T);
-templateMatch(img_4, T);
-templateMatch(img_5, T);
-templateMatch(img_6, T);
+[yc, xc] = templateMatch(img_1, T);
 
-%%
+% Perform template matching with the resized template on all images
+for i = 2:length(image_array)
+    templateMatch(image_array{i}, T);
+end
 
-T2=img_1(xc-45:xc+45, yc-85:yc+85);
-figure,imagesc(T2),colormap gray
-templateMatch(img_2, T2);
+%% Changing size of the template
+%New T centered in xc and yc
+DifferentSize(T, yc, xc, 2, image_array)
 
+DifferentSize(T, yc, xc, 4, image_array)
+
+DifferentSize(T, yc, xc, 0.5, image_array)
 
