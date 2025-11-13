@@ -1,3 +1,14 @@
+%% ============================================================
+%  Lab 5 - Computer Vision
+%  Main script
+%  ============================================================
+
+clc; clear; close all;
+
+%% -------------------------------
+%  1. NCC-based segmentation
+%  -------------------------------
+
 %Read all the images
 img_1=im2gray(imread('ur_c_s_03a_01_L_0376.png'));
 img_2=im2gray(imread('ur_c_s_03a_01_L_0377.png'));
@@ -37,3 +48,17 @@ DifferentSize(T, yc, xc, 4, image_array)
 
 DifferentSize(T, yc, xc, 0.5, image_array)
 
+%% -------------------------------
+%  2. Harris Corner Detection
+%  -------------------------------
+
+disp('Running Harris Corner Detector...');
+%ATTENZIONE: considera la compatibilità con Octave, scegliere harris_corner per Matlab
+[corners, R_map] = harris_corner_octave('i235.png'); 
+%ATTENZIONE: considera la compatibilità con Octave, scegliere harris_corner per Matlab
+disp('Harris Corner Detection completed.');
+
+%% -------------------------------
+%  End of script
+%  -------------------------------
+disp('=== LAB 5 Completed ===');
