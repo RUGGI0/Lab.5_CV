@@ -53,9 +53,9 @@ DifferentSize(T, yc, xc, 0.5, image_array)
 %  -------------------------------
 
 disp('Running Harris Corner Detector...');
-%ATTENZIONE: considera la compatibilità con Octave, scegliere harris_corner per Matlab
+%WARNING: choose the right version: matlab/octave (matlab version must be tested)
 [corners, R_map] = harris_corner_octave('i235.png'); 
-%ATTENZIONE: considera la compatibilità con Octave, scegliere harris_corner per Matlab
+%WARNING: choose the right version: matlab/octave (matlab version must be tested)
 disp('Harris Corner Detection completed.');
 
 %% -------------------------------
