@@ -1,0 +1,36 @@
+%Read all the images
+img_1=im2gray(imread('ur_c_s_03a_01_L_0376.png'));
+img_2=im2gray(imread('ur_c_s_03a_01_L_0377.png'));
+img_3=im2gray(imread('ur_c_s_03a_01_L_0378.png'));
+img_4=im2gray(imread('ur_c_s_03a_01_L_0379.png'));
+img_5=im2gray(imread('ur_c_s_03a_01_L_0380.png'));
+img_6=im2gray(imread('ur_c_s_03a_01_L_0381.png'));
+img_ex2=imread('i235.png');
+
+%Create an array of images
+image_array = {img_1, img_2, img_3, img_4, img_5, img_6};
+
+figure(), imagesc(img_1), colormap gray;
+
+T_red=img_1(350:430, 690:770);
+T_black=img_1(370:410,560:640);
+
+%% Perform template matching with the template on all images
+
+%For the red car
+templateMatch(image_array, T_red);
+
+%For the balck car
+[yc_b, xc_b] = templateMatch(image_array, T_black);
+
+%% Changing size of T_blackhe T_blackemplaT_blacke
+%New T centered in xc and yc
+DifferentSize(T_black, yc_b, xc_b, 2, image_array)
+
+DifferentSize(T_black, yc_b, xc_b, 4, image_array)
+
+DifferentSize(T_black, yc_b, xc_b, 0.5, image_array)
+
+%% Harris corner
+Harris_corner(img_ex2); 
+
