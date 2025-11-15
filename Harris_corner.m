@@ -1,15 +1,15 @@
 %Harris corner detector
 function Harris_corner(img)
     I=double(img);
-    figure,imagesc(I),colormap gray
+    figure(),imagesc(I),colormap gray, title('Original image');
     
     %compute x and y derivative of the image
     dx=[1 0 -1; 2 0 -2; 1 0 -1];
     dy=[1 2 1; 0  0  0; -1 -2 -1];
     Ix=conv2(I,dx,'same');
     Iy=conv2(I,dy,'same');
-    figure,imagesc(Ix),colormap gray,title('Ix')
-    figure,imagesc(Iy),colormap gray,title('Iy')
+    figure(),imagesc(Ix),colormap gray,title('Ix');
+    figure(),imagesc(Iy),colormap gray,title('Iy');
     
     %compute products of derivatives at every pixel
     Ix2=Ix.*Ix;
@@ -18,7 +18,7 @@ function Harris_corner(img)
     
     %compute the sum of products of  derivatives at each pixel
     g = fspecial('gaussian', 9, 1.2);
-    figure,imagesc(g),colormap gray,title('Gaussian')
+    figure(),imagesc(g),colormap gray,title('Gaussian');
     Sx2=conv2(Ix2,g,'same');
     Sy2=conv2(Iy2,g,'same');
     Sxy=conv2(Ixy,g,'same');
@@ -55,7 +55,7 @@ function Harris_corner(img)
     % Thresholding
     threshold = 0.3 * max(R_map(:));
     corner_reg = R_map > threshold;
-    figure, imagesc(corner_reg), axis image off, colormap gray, title('Corner Regions');
+    figure, imagesc(corner_reg), axis image off, colormap gray, title('Corner regions over the threshold');
     
     % Find centroids of corner blobs
     stats = regionprops(corner_reg, 'Centroid');
