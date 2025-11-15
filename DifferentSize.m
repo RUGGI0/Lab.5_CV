@@ -9,4 +9,5 @@ function DifferentSize(T, yc, xc, mol, array)
     templateMatch(array, newT);
     time = toc;
     disp("Time of computing with size of x" + mol + ": " + time);
+    sgtitle(['Template matching result with template size of X', num2str(mol)]);
 end

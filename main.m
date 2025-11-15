@@ -1,4 +1,4 @@
-%Read all the images
+%Read all images
 img_1=im2gray(imread('ur_c_s_03a_01_L_0376.png'));
 img_2=im2gray(imread('ur_c_s_03a_01_L_0377.png'));
 img_3=im2gray(imread('ur_c_s_03a_01_L_0378.png'));
@@ -12,9 +12,11 @@ image_array = {img_1, img_2, img_3, img_4, img_5, img_6};
 
 figure(), imagesc(img_1), colormap gray, title("Original image");
 
+%Template for the red car
 T_red=img_1(360:430, 690:770);
 figure(), imagesc(T_red), colormap gray, title("Template for the red car");
 
+%Template for the balck car
 T_black=img_1(370:410,560:640);
 figure(), imagesc(T_black), colormap gray, title("Template for the black car");
 
@@ -28,16 +30,13 @@ sgtitle('Template matching result red car');
 [yc_b, xc_b] = templateMatch(image_array, T_black);
 sgtitle('Template matching result red car');
 
-%% Changing size of T_blackhe T_blackemplaT_blacke
-%New T centered in xc and yc
-DifferentSize(T_black, yc_b, xc_b, 2, image_array)
-sgtitle('Template matching result with template size of X2');
+%% Changing the size of the template
+%New T centered on the black car
+DifferentSize(T_black, yc_b, xc_b, 2, image_array);
 
-DifferentSize(T_black, yc_b, xc_b, 4, image_array)
-sgtitle('Template matching result with template size of X4');
+DifferentSize(T_black, yc_b, xc_b, 4, image_array);
 
-DifferentSize(T_black, yc_b, xc_b, 0.2, image_array)
-sgtitle('Template matching result with template size of X0.2');
+DifferentSize(T_black, yc_b, xc_b, 0.2, image_array);
 
 %% Harris corner
 Harris_corner(img_ex2); 
