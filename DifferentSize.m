@@ -6,9 +6,7 @@ function DifferentSize(T, yc, xc, mol, array)
     
     % Perform template matching with the resized template
     tic;
-    for i = 1:length(array)
-        templateMatch(array{i}, newT);
-    end
+    templateMatch(array, newT);
     time = toc;
-    disp("Time of computing with size of x" + mol + ":" + time);
+    disp("Time of computing with size of x" + mol + ": " + time);
 end
