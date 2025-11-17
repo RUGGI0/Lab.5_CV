@@ -50,7 +50,7 @@ function Harris_corner(img)
     figure,imagesc(edge_reg.*I),colormap gray,title('edge regions')
     figure,imagesc(corner_reg.*I),colormap gray,title('corner regions')
     figure,imagesc(flat_reg.*I),colormap gray,title('flat regions')
-    figure,imagesc(R_map),colormap jet,title('R map')
+    figure,imagesc(R_map),colormap jet,title('Harris response map')
 
     % Thresholding
     threshold = 0.3 * max(R_map(:));

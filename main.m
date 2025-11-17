@@ -28,15 +28,15 @@ sgtitle('Template matching result red car');
 
 %For the balck car
 [yc_b, xc_b] = templateMatch(image_array, T_black);
-sgtitle('Template matching result red car');
+sgtitle('Template matching result black car');
 
 %% Changing the size of the template
 %New T centered on the black car
+DifferentSize(T_black, yc_b, xc_b, 0.2, image_array);
+
 DifferentSize(T_black, yc_b, xc_b, 2, image_array);
 
 DifferentSize(T_black, yc_b, xc_b, 4, image_array);
-
-DifferentSize(T_black, yc_b, xc_b, 0.2, image_array);
 
 %% Harris corner
 Harris_corner(img_ex2); 
